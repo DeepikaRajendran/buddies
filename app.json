@@ -1,0 +1,12 @@
+{
+  "name": "commune",
+  "displayName": "commune",
+  "expo": {
+    "name": "commune",
+    "slug": "commune",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
