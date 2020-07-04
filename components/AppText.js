@@ -8,8 +8,9 @@ function AppText({ children, style }) {
 }
 const styles = StyleSheet.create({
     text: {
-        fontSize: '24px',
+        fontSize: 24,
         color: colors.white,
+        fontWeight: 'bold'
     }
 });
 export default AppText;

@@ -24,8 +24,8 @@ export default function LoginScreen() {
             </View>
 
             <View style={styles.buttons}>
-                <AppButton title="Sign In" buttonColor="white" textColor="blue" onPress="handlePress"></AppButton>
-                <AppButton title="Register" onPress="handlePress"></AppButton>
+                <AppButton title="Sign In" onPress="handlePress"></AppButton>
+                <AppButton title="Register" buttonColor="blue" textColor="white" onPress="handlePress"></AppButton>
             </View>
         </View >
     );
@@ -42,16 +42,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     content: {
-        flex: 0.5,
+        flex: 0.3,
         width: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
     },
     buttons: {
         flex: 0.1,
-        width: '100%',
+        width: '70%',
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-around',
         alignItems: 'center',
     },
 });
