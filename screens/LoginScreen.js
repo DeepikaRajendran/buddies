@@ -3,11 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import * as Yup from 'yup';
 
 import colors from './../config/colors';
-import AppForm from '../components/AppForm';
-import AppFormField from '../components/AppFormField';
+import { AppFormField, AppForm, SubmitButton } from '../components/form/';
 import AppText from '../components/AppText';
 import Screen from '../components/Screen';
-import SubmitButton from '../components/SubmitButton';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required("Please enter Email").email().label("Email"),
@@ -17,7 +15,6 @@ export default function LoginScreen() {
     return (
 
         <Screen style={styles.container}>
-
             <AppForm
                 initialValues={{ email: '', password: '' }}
                 onSubmit={(values) => console.log(values)}
