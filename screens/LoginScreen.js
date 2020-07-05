@@ -1,55 +1,65 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-//import { useNavigation } from '@react-navigation/core';
+import * as Yup from 'yup';
 
 import colors from './../config/colors';
-import AppTextInput from './../components/AppTextInput';
+import AppForm from '../components/AppForm';
+import AppFormField from '../components/AppFormField';
 import AppText from '../components/AppText';
-import AppButton from '../components/AppButton';
+import Screen from '../components/Screen';
+import SubmitButton from '../components/SubmitButton';
 
+const validationSchema = Yup.object().shape({
+    email: Yup.string().required("Please enter Email").email().label("Email"),
+    password: Yup.string().required("Please enter Password").min(4).label("Password")
+});
 export default function LoginScreen() {
-    //const navigate = useNavigation();
-
     return (
-        <View style={styles.container}>
-            <View style={styles.content}>
-                <AppText>Sign In</AppText>
-                <AppTextInput
-                    placeholder="Email"
-                    contentType="emailAddress" />
-                <AppTextInput
-                    placeholder="Password"
-                    contentType="password"
-                    secureTextEntry={true} />
-            </View>
 
-            <View style={styles.buttons}>
-                <AppButton title="Sign In" onPress="handlePress"></AppButton>
-                <AppButton title="Register" buttonColor="blue" textColor="white" onPress="handlePress"></AppButton>
-            </View>
-        </View >
+        <Screen style={styles.container}>
+
+            <AppForm
+                initialValues={{ email: '', password: '' }}
+                onSubmit={(values) => console.log(values)}
+                validationSchema={validationSchema}>
+                <View style={styles.content}>
+                    <AppText style={{ padding: 20 }}>Sign In</AppText>
+                    <AppFormField
+                        autoCapitalize="none"
+                        name="email"
+                        placeholder="Email"
+                        textContentType="emailAddress"
+                    />
+                    <AppFormField
+                        name="password"
+                        placeholder="Password"
+                        textContentType="password"
+                        secureTextEntry={true}
+                    />
+                </View>
+                <View style={styles.buttons}>
+                    <SubmitButton title="Sign In" />
+                    <SubmitButton title="Register" buttonColor="blue" textColor="white" />
+                </View>
+            </AppForm>
+        </Screen>
     );
 }
-function handlePress() {
-    console.log("verified")
-}
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.blue,
         justifyContent: 'center',
-        alignItems: 'center',
     },
     content: {
-        flex: 0.3,
         width: '100%',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
         alignItems: 'center',
     },
     buttons: {
-        flex: 0.1,
-        width: '70%',
+        width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
